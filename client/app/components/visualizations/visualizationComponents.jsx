@@ -1,11 +1,15 @@
 import React from "react";
-import { pick } from "lodash";
+import {pick} from "lodash";
 import HelpTrigger from "@/components/HelpTrigger";
 import Link from "@/components/Link";
-import { Renderer as VisRenderer, Editor as VisEditor, updateVisualizationsSettings } from "@redash/viz/lib";
-import { clientConfig } from "@/services/auth";
+import {Renderer as VisRenderer, Editor as VisEditor, updateVisualizationsSettings} from "@redash/viz/lib";
+import {clientConfig} from "@/services/auth";
 
 import countriesDataUrl from "@redash/viz/lib/visualizations/choropleth/maps/countries.geo.json";
+import franceRegionsDataUrl
+  from "@redash/viz/lib/visualizations/choropleth/maps/regions-version-simplifiee-iso.geo.json";
+import franceDeptDataUrl
+  from "@redash/viz/lib/visualizations/choropleth/maps/departements-version-simplifiee-iso.geo.json";
 import usaDataUrl from "@redash/viz/lib/visualizations/choropleth/maps/usa-albers.geo.json";
 import subdivJapanDataUrl from "@redash/viz/lib/visualizations/choropleth/maps/japan.prefectures.geo.json";
 
@@ -25,6 +29,22 @@ function wrapComponentWithSettings(WrappedComponent) {
             iso_a2: "ISO code (2 letters)",
             iso_a3: "ISO code (3 letters)",
             iso_n3: "ISO code (3 digits)",
+          },
+        },
+        france_regions: {
+          name: "France/Regions",
+          url: franceRegionsDataUrl,
+          fieldNames: {
+            nom: "Nom",
+            code: "Code",
+          },
+        },
+        france_dept: {
+          name: "France/Departements",
+          url: franceDeptDataUrl,
+          fieldNames: {
+            nom: "Nom",
+            code: "Code",
           },
         },
         usa: {
